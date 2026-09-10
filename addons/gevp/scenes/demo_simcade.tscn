@@ -21,6 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09154, 0)
 vehicle_node = NodePath("VehicleRigidBody")
 
 [node name="VehicleRigidBody" parent="VehicleController" unique_id=1931168828 instance=ExtResource("2_ms26v")]
+mass = 1200.0
+gravity_scale = 2.45
 max_torque = 1000.0
 max_rpm = 10000.0
 idle_rpm = 1000.0
