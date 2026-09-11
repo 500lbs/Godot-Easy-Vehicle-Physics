@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bwqxpg7xye72s"]
+
+[ext_resource type="Script" uid="uid://bf8bx53b8ks5m" path="res://addons/gevp/scripts/vehicle.gd" id="1_ltkop"]
+[ext_resource type="Script" uid="uid://jjcbmwk7hn78" path="res://addons/gevp/scripts/wheel.gd" id="2_vls0v"]
+[ext_resource type="CylinderMesh" uid="uid://cku45bbg77ecf" path="res://v1/Vehicles/Wheel.tres" id="3_vls0v"]
+
+[sub_resource type="Curve" id="Curve_bt7kc"]
+_data = [Vector2(0, 0.494505), 0.0, 2.04495, 0, 0, Vector2(0.767241, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.758242), -2.03956, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtj4t"]
+size = Vector3(2.0725098, 5.354843, 0.4900055)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ltkop"]
+size = Vector3(2.0725098, 3.2646093, 1.2824135)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyyvj"]
+size = Vector3(2.1, 1.1901679, 5.35)
+
+[node name="WildGoose" type="RigidBody3D" unique_id=630204706 node_paths=PackedStringArray("front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel")]
+script = ExtResource("1_ltkop")
+front_left_wheel = NodePath("WheelFrontLeft")
+front_right_wheel = NodePath("WheelFrontRight")
+rear_left_wheel = NodePath("WheelRearLeft")
+rear_right_wheel = NodePath("WheelRearRight")
+steering_slip_assist = 0.3
+countersteer_assist = 0.75
+stability_yaw_strength = 2.0
+stability_yaw_ground_multiplier = 4.0
+max_torque = 569.0
+max_rpm = 6500.0
+idle_rpm = 700.0
+torque_curve = SubResource("Curve_bt7kc")
+motor_moment = 0.3
+gear_ratios = Array[float]([3.01, 2.07, 1.43, 1.0, 0.84, 0.5])
+final_drive = 3.45
+reverse_ratio = 3.28
+shift_time = 0.25
+front_variable_split = 0.5
+vehicle_mass = 1746.0
+front_weight_distribution = 0.514
+center_of_gravity_height_offset = -0.14
+front_resting_ratio = 0.6
+front_damping_ratio = 0.5
+front_arb_ratio = 0.3
+front_toe = 0.005
+rear_resting_ratio = 0.6
+rear_damping_ratio = 0.5
+rear_toe = 0.005
+tire_stiffnesses = {
+"Dirt": 0.5,
+"Grass": 0.5,
+"Road": 5.0
+}
+coefficient_of_friction = {
+"Dirt": 1.4,
+"Grass": 1.0,
+"Road": 2.0
+}
+longitudinal_grip_ratio = {
+"Dirt": 0.56,
+"Grass": 0.8,
+"Road": 0.55
+}
+front_tire_radius = 0.355
+rear_tire_radius = 0.355
+rear_tire_width = 275.0
+coefficient_of_drag = 0.35
+frontal_area = 2.19
+
+[node name="Muscle" type="MeshInstance3D" parent="." unique_id=353317494]
+transform = Transform3D(-1, 1.509958e-07, 6.600236e-15, 0, -4.371139e-08, 1, 1.509958e-07, 1, 4.371139e-08, -7.440807e-09, 0.48636782, -0.04927825)
+mesh = SubResource("BoxMesh_rtj4t")
+skeleton = NodePath("")
+
+[node name="Muscle" type="MeshInstance3D" parent="Muscle" unique_id=1679743200]
+transform = Transform3D(-1, 3.019916e-07, -1.509958e-07, 3.019916e-07, 1, 2.1316282e-14, 1.5099046e-07, -2.1316282e-14, -1, -8.9787704e-08, 0.88593775, 0.39250094)
+mesh = SubResource("BoxMesh_ltkop")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=341706155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841916, -0.043)
+shape = SubResource("BoxShape3D_yyyvj")
+
+[node name="WheelFrontLeft" type="RayCast3D" parent="." unique_id=1798961294 node_paths=PackedStringArray("wheel_node")]
+transform = Transform3D(1, -8.47033e-22, 7.10543e-15, -8.47033e-22, 1, 1.42109e-14, 7.10543e-15, -1.42109e-14, 1, -0.924808, 0.0879494, -1.44939)
+script = ExtResource("2_vls0v")
+wheel_node = NodePath("FrontLeftWheel")
+
+[node name="FrontLeftWheel" type="Node3D" parent="WheelFrontLeft" unique_id=569625027]
+
+[node name="Muscle wheel front left" type="MeshInstance3D" parent="WheelFrontLeft/FrontLeftWheel" unique_id=1394041639]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = ExtResource("3_vls0v")
+skeleton = NodePath("")
+
+[node name="WheelFrontRight" type="RayCast3D" parent="." unique_id=1197095169 node_paths=PackedStringArray("wheel_node")]
+transform = Transform3D(1, -8.47033e-22, 7.10543e-15, -8.47033e-22, 1, 1.42109e-14, 7.10543e-15, -1.42109e-14, 1, 0.924808, 0.0879494, -1.44939)
+script = ExtResource("2_vls0v")
+wheel_node = NodePath("FrontRightWheel")
+
+[node name="FrontRightWheel" type="Node3D" parent="WheelFrontRight" unique_id=1689307695]
+
+[node name="Muscle wheel front right" type="MeshInstance3D" parent="WheelFrontRight/FrontRightWheel" unique_id=1081244132]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = ExtResource("3_vls0v")
+skeleton = NodePath("")
+
+[node name="WheelRearLeft" type="RayCast3D" parent="." unique_id=682390146 node_paths=PackedStringArray("wheel_node")]
+transform = Transform3D(1, -8.47033e-22, 7.10543e-15, -8.47033e-22, 1, 1.42109e-14, 7.10543e-15, -1.42109e-14, 1, -0.924808, 0.0879494, 1.44939)
+script = ExtResource("2_vls0v")
+wheel_node = NodePath("RearLeftWheel")
+
+[node name="RearLeftWheel" type="Node3D" parent="WheelRearLeft" unique_id=1573515872]
+
+[node name="Muscle wheel rear left" type="MeshInstance3D" parent="WheelRearLeft/RearLeftWheel" unique_id=1469311853]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = ExtResource("3_vls0v")
+skeleton = NodePath("")
+
+[node name="WheelRearRight" type="RayCast3D" parent="." unique_id=1844290517 node_paths=PackedStringArray("wheel_node")]
+transform = Transform3D(1, -8.47033e-22, 7.10543e-15, -8.47033e-22, 1, 1.42109e-14, 7.10543e-15, -1.42109e-14, 1, 0.924808, 0.0879494, 1.44939)
+script = ExtResource("2_vls0v")
+wheel_node = NodePath("RearRightWheel")
+
+[node name="RearRightWheel" type="Node3D" parent="WheelRearRight" unique_id=202412156]
+
+[node name="Muscle wheel rear right" type="MeshInstance3D" parent="WheelRearRight/RearRightWheel" unique_id=1129655589]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = ExtResource("3_vls0v")
+skeleton = NodePath("")

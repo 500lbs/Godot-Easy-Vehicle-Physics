@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccs7xtede51mo"]
+[gd_scene format=3 uid="uid://ccs7xtede51mo"]
 
 [ext_resource type="Script" path="res://addons/gevp/scripts/vehicle.gd" id="1_e1t6n"]
 [ext_resource type="Script" path="res://addons/gevp/scripts/wheel.gd" id="2_e6c7c"]
