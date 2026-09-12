@@ -2,8 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c3ixqkc6k13yi" path="res://addons/gevp/scenes/vehicle_controller.tscn" id="1_yvs8s"]
 [ext_resource type="PackedScene" uid="uid://r84pcrgvg3pd" path="res://addons/gevp/scenes/MosterTruck2.tscn" id="2_unm84"]
+[ext_resource type="PackedScene" uid="uid://b2hlchrj4h2b7" path="res://addons/gevp/scenes/engine_sound.tscn" id="3_yu7ne"]
 [ext_resource type="Script" uid="uid://d0eom7tdwlrel" path="res://addons/gevp/scripts/gui.gd" id="4_f81cp"]
 [ext_resource type="LabelSettings" uid="uid://cfkru6qotn7qf" path="res://Materials/label_settings.tres" id="4_unm84"]
+[ext_resource type="PackedScene" uid="uid://h6vdpba71kpr" path="res://addons/gevp/scenes/smoke_effect.tscn" id="4_xm473"]
 [ext_resource type="Script" uid="uid://dh62eiedykw0x" path="res://addons/gevp/scripts/camera.gd" id="5_xm473"]
 [ext_resource type="Script" uid="uid://d04sg53tcoecn" path="res://addons/gevp/scripts/debug.gd" id="7_1nvc5"]
 [ext_resource type="Script" uid="uid://cyva1e1qvfmmi" path="res://addons/gevp/scripts/debug_ui.gd" id="8_o2oty"]
@@ -63,6 +65,12 @@ tire_stiffnesses = {
 "Grass": 0.5,
 "Road": 0.5
 }
+
+[node name="EngineSound" parent="VehicleController/MonsterTruck2" unique_id=603791359 node_paths=PackedStringArray("vehicle") instance=ExtResource("3_yu7ne")]
+vehicle = NodePath("..")
+
+[node name="Smoke" parent="VehicleController/MonsterTruck2" unique_id=1623152097 node_paths=PackedStringArray("vehicle") instance=ExtResource("4_xm473")]
+vehicle = NodePath("..")
 
 [node name="GUI" type="Control" parent="." unique_id=533597581 node_paths=PackedStringArray("vehicle")]
 layout_mode = 3
