@@ -56,6 +56,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5
 vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, 0)
 gravity_scale = 2.0
 steering_speed_decay = 0.05
 max_steering_angle = 0.8726646259971648
@@ -66,6 +67,16 @@ tire_stiffnesses = {
 "Dirt": 0.5,
 "Grass": 0.5,
 "Road": 0.5
+}
+coefficient_of_friction = {
+"Dirt": 2.4,
+"Grass": 2.0,
+"Road": 0.0
+}
+rolling_resistance = {
+"Dirt": 2.0,
+"Grass": 4.0,
+"Road": 0.1
 }
 
 [node name="EngineSound" parent="VehicleController/MonsterTruck2" unique_id=603791359 node_paths=PackedStringArray("vehicle") instance=ExtResource("3_yu7ne")]
@@ -146,13 +157,25 @@ shape = SubResource("ConcavePolygonShape3D_43kne")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1281875716]
 environment = SubResource("Environment_unm84")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=90408377]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=90408377 groups=["Road"]]
 material_override = ExtResource("9_rnp22")
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=356497466]
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1683689148 groups=["Road"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+material_override = ExtResource("9_rnp22")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=356497466 groups=["Road"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+material_override = SubResource("ShaderMaterial_oe4se")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1766604686 groups=["Road"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 299.23254, 0, 0)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(100, 1, 100)
