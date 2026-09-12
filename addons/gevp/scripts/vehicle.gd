@@ -68,6 +68,20 @@ extends RigidBody3D
 ## Values below 0 disable the effect.
 @export var traction_control_max_slip := 8.0
 
+## --- MODIFIED: New wheel-lock braking system. Bypasses the grip-derived
+## max_brake_force/ABS path for the main brake pedal and instead ramps a
+## direct wheel-lock torque, so brake feel no longer depends on the
+## calculate_brake_force() math or ABS pulsing. ABS is disabled automatically
+## whenever this is enabled (see process_axle_drive). (Modified 2026-09-12)
+@export_subgroup("Wheel Lock", "lock_")
+## Replaces grip-derived braking + ABS with a direct wheel-lock system for the
+## main brake pedal. The handbrake path is unaffected.
+@export var lock_enabled := true
+## Rate the brake pedal locks the wheels, from 0 (free) to 1 (fully locked).
+## Larger values reach full lock faster. E.g. 5.0 reaches full lock in ~0.2s
+## from a cold release.
+@export var lock_ramp_speed := 5.0
+
 @export_subgroup("Front Axle", "front_")
 ## How long the ABS releases the brake, in seconds, when the
 ## spin threshold is crossed.
@@ -384,6 +398,10 @@ var stability_torque_vector := Vector3.ZERO
 var front_axle_position := Vector3.ZERO
 var rear_axle_position := Vector3.ZERO
 
+## --- MODIFIED: State for the wheel-lock braking system, ramped in
+## process_lock_braking() and consumed by get_lock_torque(). (Modified 2026-09-12)
+var brake_lock_amount := 0.0
+
 var delta_time := 0.0
 
 var vehicle_inertia : Vector3
@@ -653,6 +671,31 @@ func process_braking(delta : float) -> void:
 	
 	brake_force = brake_amount * max_brake_force
 	handbrake_force = handbrake_input * max_handbrake_force
+	
+	## --- MODIFIED: Ramp the wheel-lock amount alongside the existing brake_amount
+	## ramp. brake_force above is still calculated (used by the handbrake sizing
+	## in calculate_brake_force()) but is no longer applied to the main pedal
+	## when lock_enabled is true - see process_axle_drive(). (Modified 2026-09-12)
+	process_lock_braking(delta)
+
+## --- MODIFIED: Ramps brake_lock_amount from 0 (free) to 1 (fully locked)
+## at lock_ramp_speed, based on whether the brake pedal is pressed at all.
+## (Modified 2026-09-12)
+func process_lock_braking(delta : float) -> void:
+	var target := 1.0 if brake_input > 0.0 else 0.0
+	if target > brake_lock_amount:
+		brake_lock_amount = minf(brake_lock_amount + lock_ramp_speed * delta, target)
+	else:
+		brake_lock_amount = maxf(brake_lock_amount - lock_ramp_speed * delta, target)
+
+## --- MODIFIED: Returns the torque needed to zero out this wheel's spin
+## within one physics step, scaled by how far into the lock ramp the pedal
+## currently is. Used in place of the grip-derived brake_force when
+## lock_enabled is true. (Modified 2026-09-12)
+func get_lock_torque(wheel : Wheel, delta : float) -> float:
+	if delta <= 0.0 or brake_lock_amount <= 0.0:
+		return 0.0
+	return absf(wheel.spin) * wheel.wheel_moment / delta * brake_lock_amount
 
 func process_steering(delta : float) -> void:
 	var steer_assist_engaged := false
@@ -902,9 +945,22 @@ func process_axle_drive(axle : Axle, torque : float, drive_inertia : float, delt
 	
 	var allow_abs := true
 	
+	## --- MODIFIED: When lock_enabled, compute a per-wheel lock torque from
+	## get_lock_torque() instead of using the grip-derived brake_force, and
+	## disable ABS for the main pedal (ABS pulsing is incompatible with a hard
+	## lock). Falls back to the original brake_force behavior when
+	## lock_enabled is false. (Modified 2026-09-12)
+	var brake_torque_left := brake_force * 0.5 * axle.brake_bias
+	var brake_torque_right := brake_force * 0.5 * axle.brake_bias
+	if lock_enabled:
+		allow_abs = false
+		brake_torque_left = get_lock_torque(axle.wheels[0], delta)
+		brake_torque_right = get_lock_torque(axle.wheels[1], delta)
+	
 	## If the handbrake in engaged, disable the antilock brakes
 	if axle.handbrake:
-		brake_force += handbrake_force
+		brake_torque_left += handbrake_force
+		brake_torque_right += handbrake_force
 		allow_abs = false
 	
 	## If enough torque is applied to the axle, lock to wheel speeds and add
@@ -925,8 +981,8 @@ func process_axle_drive(axle : Axle, torque : float, drive_inertia : float, delt
 	var rotation_sum := 0.0
 	var split := (axle.rotation_split + 1.0) * 0.5
 	axle.applied_split = axle.rotation_split
-	rotation_sum += axle.wheels[0].process_torque(torque * split, drive_inertia, brake_force * 0.5 * axle.brake_bias, allow_abs, delta)
-	rotation_sum += axle.wheels[1].process_torque(torque * (1.0 - split), drive_inertia, brake_force * 0.5 * axle.brake_bias, allow_abs, delta)
+	rotation_sum += axle.wheels[0].process_torque(torque * split, drive_inertia, brake_torque_left, allow_abs, delta)
+	rotation_sum += axle.wheels[1].process_torque(torque * (1.0 - split), drive_inertia, brake_torque_right, allow_abs, delta)
 	axle.rotation_split = clampf(rotation_sum, -1.0, 1.0)
 
 func process_forces(delta : float) -> void:
