@@ -49,10 +49,16 @@ shader_parameter/in_dashed_scale_y = 0.3
 shader_parameter/in_dashed_count_x = 6.0
 shader_parameter/in_dashed_count_y = 6.0
 
+[sub_resource type="PrismMesh" id="PrismMesh_l0ao4"]
+size = Vector3(10, 1, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yu7ne"]
+data = PackedVector3Array(0, 0.5, 10, 5, -0.5, 10, -5, -0.5, 10, 0, 0.5, -10, -5, -0.5, -10, 5, -0.5, -10, 0, 0.5, 10, 0, 0.5, -10, 5, -0.5, 10, 0, 0.5, -10, 5, -0.5, -10, 5, -0.5, 10, 0, 0.5, -10, 0, 0.5, 10, -5, -0.5, -10, 0, 0.5, 10, -5, -0.5, 10, -5, -0.5, -10, -5, -0.5, 10, 5, -0.5, 10, -5, -0.5, -10, 5, -0.5, 10, 5, -0.5, -10, -5, -0.5, -10)
+
 [node name="ArcadeDemo" type="Node3D" unique_id=1943261530]
 
 [node name="VehicleController" parent="." unique_id=1204888767 node_paths=PackedStringArray("vehicle_node") instance=ExtResource("1_yvs8s")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -33.989502, 5, -35.899292)
 vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
@@ -63,6 +69,7 @@ max_steering_angle = 0.8726646259971648
 front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
 vehicle_mass = 2000.0
+front_weight_distribution = 0.6
 wheel_to_body_torque_multiplier = 2.0
 tire_stiffnesses = {
 "Dirt": 0.5,
@@ -169,8 +176,20 @@ material_override = ExtResource("9_rnp22")
 use_collision = true
 size = Vector3(100, 1, 100)
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=618788020 groups=["Dirt"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -100)
+material_override = ExtResource("9_rnp22")
+use_collision = true
+size = Vector3(100, 1, 100)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=356497466 groups=["Dirt"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+material_override = SubResource("ShaderMaterial_oe4se")
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=604048709 groups=["Dirt"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -100)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(100, 1, 100)
@@ -186,3 +205,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.73254, 8.38916, 0)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(301, 17.77832, 33)
+
+[node name="Hump3" type="MeshInstance3D" parent="." unique_id=193089569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 58.60475, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump3" unique_id=856927571]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump3/StaticBody3D" unique_id=149480636]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
+
+[node name="Hump4" type="MeshInstance3D" parent="." unique_id=205615029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 74.72128, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump4" unique_id=529417832]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump4/StaticBody3D" unique_id=1320558344]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
+
+[node name="Hump5" type="MeshInstance3D" parent="." unique_id=521772597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 91.87758, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump5" unique_id=877606669]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump5/StaticBody3D" unique_id=274826789]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
+
+[node name="Hump6" type="MeshInstance3D" parent="." unique_id=1125773980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 109.01106, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump6" unique_id=424720433]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump6/StaticBody3D" unique_id=192354396]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
+
+[node name="Hump7" type="MeshInstance3D" parent="." unique_id=1880262436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 142.07869, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump7" unique_id=1406975329]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump7/StaticBody3D" unique_id=256589695]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
+
+[node name="Hump8" type="MeshInstance3D" parent="." unique_id=1572146449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.6821156, 125.28787, 0.9457848, -32.638184)
+mesh = SubResource("PrismMesh_l0ao4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hump8" unique_id=1025626658]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hump8/StaticBody3D" unique_id=2004721616]
+shape = SubResource("ConcavePolygonShape3D_yu7ne")
