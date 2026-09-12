@@ -57,7 +57,9 @@ vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
 gravity_scale = 2.0
-steering_speed = 2.0
+steering_speed_decay = 0.05
+max_steering_angle = 0.8726646259971648
+front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
 vehicle_mass = 2000.0
 tire_stiffnesses = {
