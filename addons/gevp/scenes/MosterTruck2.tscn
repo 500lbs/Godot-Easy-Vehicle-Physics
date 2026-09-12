@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://r84pcrgvg3pd"]
+
+[ext_resource type="PackedScene" uid="uid://bx8fhhfwam6q0" path="res://addons/gevp/scenes/monster_truck.tscn" id="1_n3yjo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n3yjo"]
+size = Vector3(2.711914, 1.9746094, 5.6467743)
+
+[node name="MonsterTruck2" unique_id=658721239 instance=ExtResource("1_n3yjo")]
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." index="0" unique_id=1183321874]
+transform = Transform3D(1, -1.1265538e-19, 5.77011e-22, 0, 1, 0, 5.77011e-22, -1.6251e-41, 1, -6.823364e-15, 1.2206042, -0.4402771)
+size = Vector3(1.9863281, 0.5576172, 5.400421)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="1" unique_id=955598818]
+transform = Transform3D(1, -5.632769e-20, 2.885055e-22, 0, 1, 0, 2.885055e-22, 0, 1, -3.411599e-15, 1.7066011, -0.22013855)
+size = Vector3(2.689209, 0.9543457, 5.400421)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." index="2" unique_id=94738218]
+transform = Transform3D(1, -5.9292306e-20, 2.885055e-22, 0, 1, 0, 2.885055e-22, 0, 1, -1.0814675e-15, 2.3828447, -0.5933628)
+size = Vector3(2.3183594, 1, 1.3192177)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." index="3" unique_id=112130380]
+transform = Transform3D(1, -1.2620791e-19, 2.885055e-22, 0, 1, 0, 2.885055e-22, 0, 1, 1.322209, 2.5030975, -1.0615889)
+size = Vector3(0.38989258, 0.2699585, 0.21202135)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." index="4" unique_id=1725206104]
+transform = Transform3D(1, -1.2620791e-19, 2.885055e-22, 0, 1, 0, 2.885055e-22, 0, 1, -1.3467532, 2.5030975, -1.0615888)
+size = Vector3(0.38989258, 0.2699585, 0.21202135)
+
+[node name="Monster Truck" parent="." index="5"]
+transform = Transform3D(-100, 1.509958e-05, 6.6002363e-13, 0, -4.371139e-06, 100, 1.509958e-05, 100, 4.371139e-06, 0, 1.8, -0.1)
+visible = false
+
+[node name="Monster Truck wheel front left" parent="WheelFrontLeft/FrontLeftWheel" index="0"]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelFrontLeft/FrontLeftWheel" index="1" unique_id=1094812269]
+transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
+radius = 0.846
+height = 0.699
+sides = 12
+
+[node name="Monster Truck wheel front right" parent="WheelFrontRight/FrontRightWheel" index="0"]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelFrontRight/FrontRightWheel" index="1" unique_id=1904760425]
+transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
+radius = 0.846
+height = 0.699
+sides = 12
+
+[node name="Monster Truck wheel rear left" parent="WheelRearLeft/RearLeftWheel" index="0"]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelRearLeft/RearLeftWheel" index="1" unique_id=1657175733]
+transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
+radius = 0.846
+height = 0.699
+sides = 12
+
+[node name="Monster Truck wheel rear right" parent="WheelRearRight/RearRightWheel" index="0"]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelRearRight/RearRightWheel" index="1" unique_id=576746689]
+transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
+radius = 0.846
+height = 0.699
+sides = 12
+
+[node name="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00256348, 1.9311635, -0.3192523)
+shape = SubResource("BoxShape3D_n3yjo")
