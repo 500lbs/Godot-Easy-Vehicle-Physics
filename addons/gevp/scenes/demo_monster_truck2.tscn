@@ -84,10 +84,12 @@ label_settings = SubResource("LabelSettings_m11kk")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1097550175 node_paths=PackedStringArray("follow_this")]
 transform = Transform3D(1, 0, 0, 0, 0.98977625, 0.14262901, 0, -0.14262903, 0.98977625, 4.05282, 4.72172, 5.80061)
+fov = 127.6
 script = ExtResource("5_xm473")
-follow_distance = 10
-follow_height = 8
-follow_this = NodePath("../VehicleController/MonsterTruck2")
+follow_distance = 3
+follow_height = 0
+speed = 10.0
+follow_this = NodePath("../VehicleController/MonsterTruck2/CamLock")
 
 [node name="VehicleController" parent="." unique_id=1204888767 node_paths=PackedStringArray("vehicle_node") instance=ExtResource("1_yvs8s")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -100,9 +102,10 @@ steering_speed_decay = 0.05
 max_steering_angle = 0.8726646259971648
 front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
+gear_ratios = Array[float]([0.6, 0.8])
+final_drive = 40.0
 automatic_transmission = false
-vehicle_mass = 2000.0
-front_weight_distribution = 0.6
+front_spring_length = 0.4
 wheel_to_body_torque_multiplier = 2.0
 tire_stiffnesses = {
 "Dirt": 0.5,
@@ -119,6 +122,10 @@ rolling_resistance = {
 "Grass": 0.01,
 "Road": 0.5
 }
+air_density = 0.6
+
+[node name="CamLock" type="Node3D" parent="VehicleController/MonsterTruck2" unique_id=551376493]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 3.1111546e-07, 2.7614136, -2.3724976)
 
 [node name="EngineSound" parent="VehicleController/MonsterTruck2" unique_id=603791359 node_paths=PackedStringArray("vehicle") instance=ExtResource("3_yu7ne")]
 vehicle = NodePath("..")
@@ -131,7 +138,6 @@ script = ExtResource("7_1nvc5")
 vehicle = NodePath("../VehicleController/MonsterTruck2")
 
 [node name="DebugUI" type="Control" parent="Debug" unique_id=1764737646]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
