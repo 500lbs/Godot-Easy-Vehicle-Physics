@@ -63,6 +63,7 @@ max_steering_angle = 0.8726646259971648
 front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
 vehicle_mass = 2000.0
+wheel_to_body_torque_multiplier = 2.0
 tire_stiffnesses = {
 "Dirt": 0.5,
 "Grass": 0.5,
@@ -74,9 +75,9 @@ coefficient_of_friction = {
 "Road": 0.0
 }
 rolling_resistance = {
-"Dirt": 2.0,
-"Grass": 4.0,
-"Road": 0.1
+"Dirt": 0.1,
+"Grass": 0.01,
+"Road": 0.5
 }
 
 [node name="EngineSound" parent="VehicleController/MonsterTruck2" unique_id=603791359 node_paths=PackedStringArray("vehicle") instance=ExtResource("3_yu7ne")]
@@ -157,25 +158,31 @@ shape = SubResource("ConcavePolygonShape3D_43kne")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1281875716]
 environment = SubResource("Environment_unm84")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=90408377 groups=["Road"]]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=90408377 groups=["Dirt"]]
 material_override = ExtResource("9_rnp22")
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1683689148 groups=["Road"]]
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1683689148 groups=["Dirt"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 material_override = ExtResource("9_rnp22")
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=356497466 groups=["Road"]]
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=356497466 groups=["Dirt"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1766604686 groups=["Road"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 299.23254, 0, 0)
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1766604686 groups=["Dirt"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300.23254, 0, 0)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=774659161 groups=["Dirt"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.73254, 8.38916, 0)
+material_override = SubResource("ShaderMaterial_oe4se")
+use_collision = true
+size = Vector3(301, 17.77832, 33)
