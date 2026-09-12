@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_dnsyy")
-shader_parameter/subdivisions = 75.0
+shader_parameter/subdivisions = 3.0
 shader_parameter/grid_width = 0.0
 shader_parameter/background_color = Color(1, 1, 1, 1)
 shader_parameter/background_color_two = Color(0, 0, 0, 1)

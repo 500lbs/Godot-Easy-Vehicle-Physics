@@ -163,7 +163,7 @@ visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelFrontLeft/FrontLeftWheel" index="1" unique_id=1094812269]
 transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
-material_override = ExtResource("2_p4ead")
+material_override = SubResource("ShaderMaterial_3qs7m")
 radius = 0.846
 height = 0.699
 sides = 12
@@ -183,7 +183,7 @@ visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelRearLeft/RearLeftWheel" index="1" unique_id=1657175733]
 transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
-material_override = ExtResource("2_p4ead")
+material_override = SubResource("ShaderMaterial_3qs7m")
 radius = 0.846
 height = 0.699
 sides = 12
@@ -193,7 +193,7 @@ visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="WheelRearRight/RearRightWheel" index="1" unique_id=576746689]
 transform = Transform3D(-4.3711367e-08, 1, 1.50996e-07, -1, -4.371139e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
-material_override = ExtResource("2_p4ead")
+material_override = SubResource("ShaderMaterial_3qs7m")
 radius = 0.846
 height = 0.699
 sides = 12
