@@ -20,6 +20,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 66.4
 vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
+gravity_scale = 2.0
+steering_speed = 2.0
 rear_steering_ratio = -0.5
 
 [node name="GUI" type="Control" parent="." unique_id=533597581 node_paths=PackedStringArray("vehicle")]
