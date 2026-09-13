@@ -179,7 +179,6 @@ shader_parameter/in_dashed_count_y = 6.0
 [node name="demo_monster_truck2" type="Node3D" unique_id=1943261530]
 
 [node name="GUI" type="Control" parent="." unique_id=533597581 node_paths=PackedStringArray("vehicle")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,14 +225,14 @@ transform = Transform3D(-0.95452726, 0, 0.2981236, 0, 1, 0, -0.2981236, 0, -0.95
 vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 44.787376, 0, -24.427994)
 gravity_scale = 2.0
 steering_speed_decay = 0.05
 max_steering_angle = 0.8726646259971648
 front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
 max_rpm = 10000.0
-gear_ratios = Array[float]([0.6, 0.8])
+gear_ratios = Array[float]([0.6, 0.4])
 final_drive = 40.0
 front_spring_length = 0.4
 wheel_to_body_torque_multiplier = 2.0
@@ -264,6 +263,7 @@ material_override = SubResource("StandardMaterial3D_yu7ne")
 size = Vector3(2.3183594, 1, 2.464631)
 
 [node name="EngineSound" parent="VehicleController/MonsterTruck2" unique_id=603791359 node_paths=PackedStringArray("vehicle") instance=ExtResource("3_yu7ne")]
+pitch_scale = 0.5
 vehicle = NodePath("..")
 
 [node name="Smoke" parent="VehicleController/MonsterTruck2" unique_id=1623152097 node_paths=PackedStringArray("vehicle") instance=ExtResource("4_xm473")]
