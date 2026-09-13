@@ -28,29 +28,11 @@ shader_parameter/in_dashed_scale_y = 0.3
 shader_parameter/in_dashed_count_x = 6.0
 shader_parameter/in_dashed_count_y = 6.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bu6l"]
-render_priority = 0
-shader = ExtResource("3_71tkf")
-shader_parameter/subdivisions = 2.0
-shader_parameter/grid_width = 0.0
-shader_parameter/background_color = Color(0, 0.84520376, 0.8691953, 1)
-shader_parameter/background_color_two = Color(0, 0.54227066, 0.9470318, 1)
-shader_parameter/grid_color = Color(0.5019608, 0.1882353, 0, 1)
-shader_parameter/dashed_scale_x = 0.02
-shader_parameter/dashed_scale_y = 0.02
-shader_parameter/dashed_count_x = 1.0
-shader_parameter/dashed_count_y = 1.0
-shader_parameter/point_width = 0.021
-shader_parameter/point_color = Color(1, 0, 0, 1)
-shader_parameter/point_scale_x = 0.0999999977648
-shader_parameter/point_scale_y = 0.0999999977648
-shader_parameter/inside_width = 0.01
-shader_parameter/inside_subdivisions = 6.0
-shader_parameter/inside_color = Color(0.7525431, 0, 0.17504919, 1)
-shader_parameter/in_dashed_scale_x = 0.3
-shader_parameter/in_dashed_scale_y = 0.3
-shader_parameter/in_dashed_count_x = 6.0
-shader_parameter/in_dashed_count_y = 6.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw65a"]
+transparency = 3
+alpha_hash_scale = 2.0
+alpha_antialiasing_mode = 0
+blend_mode = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmypp"]
 render_priority = 0
@@ -141,7 +123,7 @@ size = Vector3(2.689209, 0.9543457, 5.400421)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." index="2" unique_id=94738218]
 transform = Transform3D(1, -5.9292306e-20, 2.885055e-22, 0, 1, 0, 2.885055e-22, 0, 1, -1.0814675e-15, 2.3828447, 0.49251366)
-material_override = SubResource("ShaderMaterial_5bu6l")
+material_override = SubResource("StandardMaterial3D_nw65a")
 size = Vector3(2.3183594, 1, 1.3192177)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." index="3" unique_id=112130380]
