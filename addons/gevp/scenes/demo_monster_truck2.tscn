@@ -37,8 +37,8 @@ render_priority = 0
 shader = ExtResource("10_yvs8s")
 shader_parameter/subdivisions = 5.0
 shader_parameter/grid_width = 0.0
-shader_parameter/background_color = Color(1, 1, 1, 1)
-shader_parameter/background_color_two = Color(0.15686275, 0.050980393, 0, 1)
+shader_parameter/background_color = Color(0.6591028, 0.5084766, 0.21098131, 1)
+shader_parameter/background_color_two = Color(0.72, 0.45888007, 0.23040001, 1)
 shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/dashed_scale_x = 0.02
 shader_parameter/dashed_scale_y = 0.02
@@ -61,7 +61,7 @@ render_priority = 0
 shader = ExtResource("10_yvs8s")
 shader_parameter/subdivisions = 4.0
 shader_parameter/grid_width = 0.0
-shader_parameter/background_color = Color(1, 1, 1, 1)
+shader_parameter/background_color = Color(1, 0, 0, 1)
 shader_parameter/background_color_two = Color(0.15686275, 0.050980393, 0, 1)
 shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/dashed_scale_x = 0.02
@@ -86,7 +86,7 @@ shader = ExtResource("10_yvs8s")
 shader_parameter/subdivisions = 6.0
 shader_parameter/grid_width = 0.0
 shader_parameter/background_color = Color(1, 1, 1, 1)
-shader_parameter/background_color_two = Color(0.15686275, 0.050980393, 0, 1)
+shader_parameter/background_color_two = Color(1, 0.33333337, 0, 1)
 shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/dashed_scale_x = 0.02
 shader_parameter/dashed_scale_y = 0.02
@@ -109,8 +109,8 @@ render_priority = 0
 shader = ExtResource("10_yvs8s")
 shader_parameter/subdivisions = 20.0
 shader_parameter/grid_width = 0.0
-shader_parameter/background_color = Color(1, 1, 1, 1)
-shader_parameter/background_color_two = Color(0.15686275, 0.050980393, 0, 1)
+shader_parameter/background_color = Color(0.5333333, 0, 1, 1)
+shader_parameter/background_color_two = Color(0.51, 0.6325, 1, 1)
 shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/dashed_scale_x = 0.02
 shader_parameter/dashed_scale_y = 0.02
@@ -128,12 +128,36 @@ shader_parameter/in_dashed_scale_y = 0.3
 shader_parameter/in_dashed_count_x = 1.0
 shader_parameter/in_dashed_count_y = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nvc5"]
+render_priority = 0
+shader = ExtResource("10_yvs8s")
+shader_parameter/subdivisions = 10.0
+shader_parameter/grid_width = 0.0
+shader_parameter/background_color = Color(0, 1, 0.75, 1)
+shader_parameter/background_color_two = Color(0, 0, 0, 1)
+shader_parameter/grid_color = Color(0.5019608, 0.1882353, 0, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(1, 0, 0, 1)
+shader_parameter/point_scale_x = 0.0999999977648
+shader_parameter/point_scale_y = 0.0999999977648
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.7525431, 0, 0.17504919, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oe4se"]
 render_priority = 0
 shader = ExtResource("10_yvs8s")
-shader_parameter/subdivisions = 3.0
+shader_parameter/subdivisions = 46.0
 shader_parameter/grid_width = 0.0
-shader_parameter/background_color = Color(1, 1, 1, 1)
+shader_parameter/background_color = Color(0, 1, 0.75, 1)
 shader_parameter/background_color_two = Color(0, 0, 0, 1)
 shader_parameter/grid_color = Color(0.5019608, 0.1882353, 0, 1)
 shader_parameter/dashed_scale_x = 0.02
@@ -198,7 +222,7 @@ speed = 10.0
 follow_this = NodePath("../VehicleController/MonsterTruck2/CamLock")
 
 [node name="VehicleController" parent="." unique_id=1204888767 node_paths=PackedStringArray("vehicle_node") instance=ExtResource("1_yvs8s")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -97.68915, 0, -15.087921)
+transform = Transform3D(-0.95452726, 0, 0.2981236, 0, 1, 0, -0.2981236, 0, -0.95452726, -85.09613, 0, 50.18222)
 vehicle_node = NodePath("MonsterTruck2")
 
 [node name="MonsterTruck2" parent="VehicleController" unique_id=658721239 instance=ExtResource("2_unm84")]
@@ -208,9 +232,9 @@ steering_speed_decay = 0.05
 max_steering_angle = 0.8726646259971648
 front_steering_ratio = 1.5
 rear_steering_ratio = -0.5
+max_rpm = 10000.0
 gear_ratios = Array[float]([0.6, 0.8])
 final_drive = 40.0
-automatic_transmission = false
 front_spring_length = 0.4
 wheel_to_body_torque_multiplier = 2.0
 tire_stiffnesses = {
@@ -248,7 +272,6 @@ vehicle = NodePath("..")
 [node name="Debug" type="Node" parent="." unique_id=138356954 node_paths=PackedStringArray("vehicle")]
 script = ExtResource("7_1nvc5")
 vehicle = NodePath("../VehicleController/MonsterTruck2")
-show_debug = false
 
 [node name="DebugUI" type="Control" parent="Debug" unique_id=1764737646]
 layout_mode = 3
@@ -274,10 +297,34 @@ environment = SubResource("Environment_unm84")
 transform = Transform3D(-0.99968314, 0, -0.02517116, 0, 1, 0, 0.02517116, 0, -0.99968314, -41.77881, 0, -63.07141)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=90408377 groups=["Dirt"]]
-transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, -45.5444, -5, -48.06308)
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, -6.8599586, -5, -47.799416)
 material_override = SubResource("ShaderMaterial_f81cp")
 use_collision = true
-size = Vector3(226.65839, 10, 238.96924)
+size = Vector3(283.0831, 10, 238.96924)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D" unique_id=650703895 groups=["Dirt"]]
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, 117.27667, 1.0517578, -47.79943)
+material_override = SubResource("ShaderMaterial_f81cp")
+use_collision = true
+size = Vector3(34.810226, 22.103516, 238.96924)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D" unique_id=688213429 groups=["Dirt"]]
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, -6.9015045, -1.8339844, 61.511375)
+material_override = SubResource("ShaderMaterial_f81cp")
+use_collision = true
+size = Vector3(283, 16.332031, 20.348022)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D" unique_id=1051464725 groups=["Dirt"]]
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, -124.153336, -0.86624146, -47.799435)
+material_override = SubResource("ShaderMaterial_f81cp")
+use_collision = true
+size = Vector3(48.496628, 18.267517, 238.96924)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D" unique_id=1591627283 groups=["Dirt"]]
+transform = Transform3D(1.0000017, 0, 0, 0, 1, 0, 0, 0, 1.0000017, -6.9015045, 2.1347656, -149.91042)
+material_override = SubResource("ShaderMaterial_f81cp")
+use_collision = true
+size = Vector3(283, 24.269531, 34.74756)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Node3D" unique_id=815042293 groups=["Dirt"]]
 transform = Transform3D(-0.12400349, 0.22373453, -0.966729, -0.005694628, 0.97407234, 0.22616452, 0.99226505, 0.033550307, -0.11951416, -55.427074, -0.6994629, -37.748734)
@@ -286,19 +333,25 @@ use_collision = true
 size = Vector3(100, 10, 41.43445)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Node3D" unique_id=984794616 groups=["Dirt"]]
-transform = Transform3D(0.99236196, 0, -0.12335794, 0, 1, 0, 0.12335794, 0, 0.99236196, -63.5261, -5.0904236, 16.80545)
+transform = Transform3D(0.99236196, 0, -0.12335794, 0, 1, 0, 0.12335794, 0, 0.99236196, -63.5261, -4.3652496, 16.80545)
 material_override = ExtResource("9_rnp22")
 use_collision = true
-size = Vector3(49.916077, 34.089294, 20)
+size = Vector3(49.916077, 35.539642, 20)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Node3D" unique_id=142162281 groups=["Dirt"]]
-transform = Transform3D(0.94396937, 0, 0.33003235, 0, 1, 0, -0.33003235, 0, 0.94396937, -21.888226, -8.518158, 11.912155)
+transform = Transform3D(0.94396937, 0, 0.33003235, 0, 1, 0, -0.33003235, 0, 0.94396937, -21.888226, -7.539444, 11.912155)
 material_override = ExtResource("9_rnp22")
 use_collision = true
-size = Vector3(49.916077, 34.089294, 20)
+size = Vector3(49.916077, 36.046722, 20)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="Node3D" unique_id=778007784 groups=["Dirt"]]
 transform = Transform3D(0.83325505, 0, 0.55288804, 0, 1, 0, -0.55288804, 0, 0.83325505, 16.71582, -12.042999, -9.501228)
+material_override = ExtResource("9_rnp22")
+use_collision = true
+size = Vector3(49.916077, 34.089294, 20)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Node3D" unique_id=64944298 groups=["Dirt"]]
+transform = Transform3D(0.38376477, 0, 0.9234303, 0, 1, 0, -0.9234303, 0, 0.38376477, 43.517117, -14.779327, -45.273224)
 material_override = ExtResource("9_rnp22")
 use_collision = true
 size = Vector3(49.916077, 34.089294, 20)
@@ -310,19 +363,19 @@ use_collision = true
 size = Vector3(49.916077, 34.089294, 42.378418)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Node3D" unique_id=1044869151 groups=["Dirt"]]
-transform = Transform3D(-0.13487485, 0, -0.9908603, 0, 1, 0, 0.9908603, 0, -0.13487485, -99.63466, -2.4454498, -40.47722)
+transform = Transform3D(-0.13487485, 0, -0.9908603, 0, 1, 0, 0.9908603, 0, -0.13487485, -78.7826, -2.1163101, -35.612328)
 material_override = SubResource("ShaderMaterial_xm473")
 use_collision = true
-size = Vector3(153.0264, 32.45981, 57.752808)
+size = Vector3(113.51252, 33.118088, 11.609314)
 
 [node name="Divider4" type="CSGBox3D" parent="Node3D" unique_id=1139553071 groups=["Dirt"]]
-transform = Transform3D(-0.949664, -0.22533342, -0.21761025, -0.22988547, 0.9732079, -0.0045313756, 0.21278824, 0.045721367, -0.97600305, -2.4249077, -2.9781742, -75.82212)
-material_override = SubResource("ShaderMaterial_oe4se")
+transform = Transform3D(-0.949664, -0.22533342, -0.21761025, -0.22988547, 0.9732079, -0.0045313756, 0.21278745, 0.045721367, -0.97600305, -7.523754, -4.212455, -74.679634)
+material_override = SubResource("ShaderMaterial_1nvc5")
 use_collision = true
-size = Vector3(61.66687, 19.73352, 54.367462)
+size = Vector3(50.92865, 19.73352, 54.367462)
 
 [node name="Divider6" type="CSGBox3D" parent="Node3D" unique_id=556428109 groups=["Dirt"]]
-transform = Transform3D(0.97272176, 0.17676872, -0.15003027, -0.18036069, 0.9835446, -0.010536624, 0.1457152, 0.037309676, 0.9885956, -24.309078, 3.323033, -99.36447)
+transform = Transform3D(0.97272176, 0.1767687, -0.15003027, -0.18036069, 0.9835446, -0.010536624, 0.1457152, 0.037309676, 0.9885956, -24.309078, 1.5323226, -99.36447)
 material_override = SubResource("ShaderMaterial_oe4se")
 use_collision = true
 size = Vector3(61.66687, 19.73352, 41.85871)
