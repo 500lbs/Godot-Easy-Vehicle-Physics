@@ -362,6 +362,18 @@ material_override = SubResource("ShaderMaterial_yu7ne")
 use_collision = true
 size = Vector3(49.916077, 34.089294, 42.378418)
 
+[node name="CSGBox3D20" type="CSGBox3D" parent="Node3D" unique_id=684112823 groups=["Dirt"]]
+transform = Transform3D(0.99236196, 0, -0.12335794, 0, 1, 0, 0.12335794, 0, 0.99236196, -67.971466, 0.060112, -85.221344)
+material_override = SubResource("ShaderMaterial_yu7ne")
+use_collision = true
+size = Vector3(40.264397, 37.470932, 8.500488)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Node3D" unique_id=836714432 groups=["Dirt"]]
+transform = Transform3D(-0.12335799, 0, -0.992362, 0, 1, 0, 0.992362, 0, -0.12335799, -57.318775, 2.4198532, -102.137695)
+material_override = SubResource("ShaderMaterial_yu7ne")
+use_collision = true
+size = Vector3(27.229609, 42.190414, 8.500488)
+
 [node name="CSGBox3D15" type="CSGBox3D" parent="Node3D" unique_id=1044869151 groups=["Dirt"]]
 transform = Transform3D(-0.13487485, 0, -0.9908603, 0, 1, 0, 0.9908603, 0, -0.13487485, -78.7826, -2.1163101, -35.612328)
 material_override = SubResource("ShaderMaterial_xm473")
